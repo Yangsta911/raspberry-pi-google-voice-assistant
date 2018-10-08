@@ -192,4 +192,4 @@ Solder all of the Ada fruit parts onto the Adafruit perma-proto hat according to
 
 ![alt text](screenshots/Screenshot from 2018-10-07 21-01-13.png "circuit diagram")
 
-![alt text](screenshots/ rpi-custom-voice-hat-wiring_akoUeS9uWg.png "wiring diagram")
+![alt text](screenshots/ 	rpi-custom-voice-hat-wiring_akoUeS9uWg.png "wiring diagram")
