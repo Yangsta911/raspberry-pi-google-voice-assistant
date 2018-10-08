@@ -13,14 +13,17 @@ using a raspberry pi as a google voice assistant
 ### Activating the microphone
 1. clone the project onto the pi
 '''
+
 git clone https://github.com/shivasiddharth/custom-voice-hat 
 '''
 2. turn on I2 support in config.txt with
 '''
+
 sudo nano /boot/config.txt 
 '''
 remove the hashtag infront of
 '''
+
 #dtparam=i2s=on 
 #dtparam=i2c_arm=on 
 #dtparam=spi=on 
@@ -28,28 +31,33 @@ remove the hashtag infront of
 '''
 then add
 '''
+
 dtparam=i2c_vc=on
 '''
 save and exit then reboot
 
 3. Check for the hats folder
 '''
+
 cd /proc/device-tree/
 '''
 
 4.Open a new terminal and change directory to eepromutils
 '''
+
 cd /home/pi/custom-voice-hat/eepromutils  
 '''
 
 5.Make the EEPROM flasher executable and Flash the EEPROM with the eeprom file
 '''
+
 sudo chmod +x ./eepflash.sh 
 sudo ./eepflash.sh -w -f=voicehat.eep -t=24c32
 '''
 
 6.Update Raspberry Pi kernels
 '''
+
 sudo apt-get update 
 sudo apt-get install raspberrypi-kernel  
 '''
@@ -58,23 +66,27 @@ sudo apt-get install raspberrypi-kernel
 
 8. Check if your Hat is recognized
 '''
+
 cd /proc/device-tree/
 '''
 A new folder called HAT should appear if it has
 
 9. move you pi into the audio recognition scripts
 '''
+
 cd /home/pi/custom-voice-hat/audio-config/scripts/
 '''
 
 10. make the scripts executable
 '''
+
 sudo chmod +x ./custom-voice-hat.sh 
 sudo chmod +x ./install-i2s.sh  
 '''
 
 11. Run the scripts
 '''
+
 sudo ./custom-voice-hat.sh 
 sudo ./install-i2s.sh 
 '''
@@ -98,11 +110,13 @@ Enable:
 9. Fill out all fields for your device and click register model
 10. Download the OAuth2.0 Credentials and transfer the Json file onto the raspberry pi
 '''
+
 scp ~/Downloads/client_secret_client-id.json pi@raspberry-pi-ip-address:/home/pi/
 '''
 11. Skip the specific traits page copy down model id as it will be used later
 12.Use a virtual environment to isolate the SDK
 '''
+
 sudo apt-get update
 sudo apt-get install python-dev python-virtualenv
 virtualenv env --no-site-packages
@@ -111,18 +125,22 @@ source env/bin/activate
 '''
 13. Download the package
 '''
+
 sudo apt-get install portaudio19-dev libffi-dev libssl-dev
 '''
 14. Use pip to install the latest version of the Google Assitant library python package in the virtual environment
 '''
+
 python -m pip install --upgrade google-assistant-sdk[samples]
 '''
 15.Install or update the authorization tool
 '''
+
 python -m pip install --upgrade google-auth-oauthlib[tool]
 '''
 16. Generate the credentials needed to run the sample codes and tools
 '''
+
 google-oauthlib-tool --scope https://www.googleapis.com/auth/assistant-sdk-prototype \
       --save --headless --client-secrets /path/to/client_secret_client-id.json
 '''
@@ -130,6 +148,7 @@ google-oauthlib-tool --scope https://www.googleapis.com/auth/assistant-sdk-proto
 18. Enter the code shown after logining in with Gmail into the terminal
 19. Run the sample code
 '''
+
 googlesamples-assistant-pushtotalk --project-id my-dev-project --device-model-id my-model
 '''
 replace my-dev-project with the project id found in the [Actions console](https://console.actions.google.com/u/0/) select the project created previously, select the gear icon and select project settings
