@@ -191,9 +191,5 @@ Your Google Assistant should now be working
 Solder all of the Ada fruit parts onto the Adafruit perma-proto hat according to the circuit diagram and picture provided.
 
 
-![alt text]( screenshots/rpi-custom-voice-hat-wiring_akoUeS9uWg.png "wiring diagram")
-Wiring diagram
-
-
 ![alt text]( screenshots/circuit diagram.png "wiring diagram")
 Circuit diagram
